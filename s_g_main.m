@@ -108,10 +108,6 @@ results_medium_score_best = [];
 results_basic_score_best = [];
 
 while (ei < maxNumEpisodes && ~convergence ), % ei<maxNumEpisodes && % ei is counter for episodes
-    if ismember(ei,save_episodes)
-        filename = ['./results/weights',int2str(ei),'.mat'];
-        %save(filename,'Wih','biasih','Who','biasho');
-    end
     
     if mod(ei,1000)==0
         [successful_key_door_episodes, successful_key_episodes, successful_easy_episodes, successful_basic_key_door, scores_vec,scores_vec_basic,score_key,score_easy, total_episodes] = test_func_s_g_no_puddle(W_ih_big, b_ih_big, W_ho_big, b_ho_big)

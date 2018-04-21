@@ -93,7 +93,6 @@ agentBumped2wall = false;
 %% Episode Loops
 ei = 0;
 delta_sum = [];
-save_episodes = 0:1000:1000000;
 total_num_steps = 0;
 radius = 0.11;
 results_basic_score = [];
@@ -115,7 +114,7 @@ while (ei < maxNumEpisodes && ~convergence ), % ei<maxNumEpisodes && % ei is cou
     end
     
     if mod(ei,1000)==0
-        [successful_key_door_episodes, successful_key_episodes, successful_easy_episodes, successful_basic_key_door, scores_vec,scores_vec_basic,score_key,score_easy, total_episodes] = test_func_s_g_no_puddle(W_ih_big, b_ih_big, W_ho_big, b_ho_big);
+        [successful_key_door_episodes, successful_key_episodes, successful_easy_episodes, successful_basic_key_door, scores_vec,scores_vec_basic,score_key,score_easy, total_episodes] = test_func_s_g_no_puddle(W_ih_big, b_ih_big, W_ho_big, b_ho_big)
         results_basic_score = [results_basic_score,mean(scores_vec_basic)];
         results_basic_success = [results_basic_success,length(successful_basic_key_door)/total_episodes];
         results_hard_score = [results_hard_score, mean(scores_vec)];

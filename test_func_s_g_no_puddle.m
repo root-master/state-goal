@@ -158,7 +158,6 @@ for x=xInputInterval,
              [Q,~,~,~] = kwta_NN_forward_s_g(st,g,nMeshx,nMeshy, W_ih_big,b_ih_big, W_ho_big,b_ho_big); 
              [~,a] = max(Q);
              sp1 = UPDATE_STATE(s,a,xgrid,xInputInterval,ygrid,yInputInterval);
-             [agent_in_puddle,dist_2_edge] = CreatePuddle(sp1);
              rew = 0;
              scores = scores + rew;
              

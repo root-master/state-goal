@@ -3,7 +3,7 @@ function [o,h_vec,h_id_vec,gid_vec]  = kwta_NN_forward_s_g(st,g,nMeshx,nMeshy, W
 shunt = 1;
 
 gid_vec = neighbors_of_goal(g,nMeshx,nMeshy);
-gate_weights = 0.1 * ones(1,length(gid_vec));
+gate_weights = 0.01 * ones(1,length(gid_vec));
 gate_weights(1) = 1;
 gate_weights = gate_weights ./ sum(gate_weights);
 
@@ -46,5 +46,6 @@ for i=1:length( gid_vec )
 
     Q = h * Who + biasho; % Output
     
-    o = o + Q * gate_weights(i);
+        o = o + Q* gate_weights(i);
+    end
 end

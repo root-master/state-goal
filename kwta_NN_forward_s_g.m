@@ -46,6 +46,6 @@ for i=1:length( gid_vec )
 
     Q = h * Who + biasho; % Output
     
-        o = o + Q* gate_weights(i);
-    end
+    o = o + Q* gate_weights(i);
 end
+

@@ -134,6 +134,16 @@ while (ei < maxNumEpisodes && ~convergence ), % ei<maxNumEpisodes && % ei is cou
         fprintf('max score       hard     : %.4f \n',max(scores_vec));
         fprintf('max score       basic    : %.4f \n',max(scores_vec_basic));
         fprintf('max score       medium   : %.4f \n',max(score_key));
+        
+        if length(successful_key_door_episodes)/total_episodes > 0.98
+            close_to_convergence =  close_to_convergence + 1;
+        else
+            close_to_convergence = 0;
+        end
+
+        if close_to_convergence > 5
+            convergence = true;
+        end
 
         pause(5)
     end
@@ -218,15 +228,6 @@ while (ei < maxNumEpisodes && ~convergence ), % ei<maxNumEpisodes && % ei is cou
 
     %% Exploration vs. Exploitation    
 
-    if length(successful_key_door_episodes)/total_episodes > 0.98
-       close_to_convergence =  close_to_convergence + 1;
-    else
-        close_to_convergence = 0;
-    end
-    
-    if close_to_convergence > 10
-        convergence = true;
-    end
        
     if mod(ei,10000) == 0
         file_name = 'all_variables_April_16th.mat';

@@ -114,7 +114,7 @@ while (ei < maxNumEpisodes && ~convergence ), % ei<maxNumEpisodes && % ei is cou
         %save(filename,'Wih','biasih','Who','biasho');
     end
     
-    if mod(ei,10000)==0
+    if mod(ei,1000)==0
         [successful_key_door_episodes, successful_key_episodes, successful_easy_episodes, successful_basic_key_door, scores_vec,scores_vec_basic,score_key,score_easy, total_episodes] = test_func_seperate_policy_no_puddle(W_ih_big, b_ih_big, W_ho_big, b_ho_big);        
         results_basic_score = [results_basic_score,mean(scores_vec_basic)];
         results_basic_success = [results_basic_success,length(successful_basic_key_door)/total_episodes];
@@ -128,6 +128,9 @@ while (ei < maxNumEpisodes && ~convergence ), % ei<maxNumEpisodes && % ei is cou
         results_basic_score_best = [results_basic_score_best,max(scores_vec_basic)];
         results_easy_score = [results_easy_success,mean(score_easy)];
         
+    end
+    
+    if mod(ei,10000)==0
         fprintf('average success hard     : %.4f \n',length(successful_key_door_episodes)/total_episodes);
         fprintf('average success basic    : %.4f \n',length(successful_basic_key_door)/total_episodes);
         fprintf('average success medium   : %.4f \n',length(successful_key_episodes)/total_episodes);
@@ -142,6 +145,7 @@ while (ei < maxNumEpisodes && ~convergence ), % ei<maxNumEpisodes && % ei is cou
 
         pause(5)
     end
+
       
      s0 = initializeState(xVector,yVector);
      s = s0;

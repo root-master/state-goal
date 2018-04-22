@@ -1,6 +1,6 @@
  function [W_ih_big,b_ih_big,W_ho_big,b_ho_big] = Update_kwtaNN_s_g(st,act,h_vec,h_id_vec,gid_vec,delta,alpha, W_ih_big,b_ih_big, W_ho_big,b_ho_big)
 
-gate_weights = 0.001 * ones(1,length(gid_vec));
+gate_weights = 0.0001 * ones(1,length(gid_vec));
 gate_weights(1) = 1;
 gate_weights = gate_weights ./ sum(gate_weights);
   
